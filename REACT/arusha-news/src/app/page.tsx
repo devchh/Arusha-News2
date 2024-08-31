@@ -52,12 +52,12 @@ const HomePage: React.FC = () => {
       {/* Main content of the page */}
       <div className="flex flex-col items-center justify-start h-screen">
         {/* Title */}
-        <h1 className="text-8xl text-center my-9 font-Averia Serif Libre">
+        <h1 className="text-8xl text-center my-4 font-Averia Serif Libre">
           Arusha News
         </h1>
 
         {/* Navigation Bar */}
-        <nav className="w-full shadow-md">
+        <nav className="w-full shadow-md my-6 text-center">
           <div className="container mx-auto flex justify-center py-4">
             <ul className="flex space-x-4">
               <li>
@@ -104,6 +104,9 @@ const HomePage: React.FC = () => {
                 >
                   Entertainment
                 </Link>
+              </li>
+              <li>
+              <input type="text" placeholder="Search.."></input>
               </li>
             </ul>
           </div>
