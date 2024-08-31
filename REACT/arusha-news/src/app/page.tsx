@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
       <div className="flex flex-col items-center justify-start h-screen">
         {/* Title */}
         <h1 className="text-8xl text-center my-4 font-Averia Serif Libre">
-          Arusha News
+          ARUSHA NEWS
         </h1>
 
         {/* Navigation Bar */}
