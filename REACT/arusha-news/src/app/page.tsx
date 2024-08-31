@@ -1,99 +1,126 @@
-
-// import './globals.css'; // Ensure this imports your Tailwind CSS
-// import React from "react";
-// import Head from "next/head";
-
 // src/app/page.tsx
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Article from "../../pages/api/Articles"
+
+// Sample articles data
+const initialArticles = [
+  {
+    id: 1,
+    title: "Politics Article 1",
+    content: "Content for politics article 1...",
+    tags: ["Politics"],
+  },
+  {
+    id: 2,
+    title: "Sports Article 1",
+    content: "Content for sports article 1...",
+    tags: ["Sports"],
+  },
+  {
+    id: 3,
+    title: "Entertainment Article 1",
+    content: "Content for entertainment article 1...",
+    tags: ["Entertainment"],
+  },
+  {
+    id: 4,
+    title: "Politics and Sports Article",
+    content: "Content for a politics and sports article...",
+    tags: ["Politics", "Sports"],
+  },
+  {
+    id:5,
+    title:"Business",
+    tags: ["Business"],
+  },
+];
 
 const HomePage: React.FC = () => {
+  const [articles, setArticles] = useState(initialArticles);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  // Filter articles based on selected tag
+  const filteredArticles = selectedTag
+    ? articles.filter((article) => article.tags.includes(selectedTag))
+    : articles;
+
   return (
     <>
       {/* Main content of the page */}
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center justify-start h-screen">
         {/* Title */}
         <h1 className="text-8xl text-center my-9 font-Averia Serif Libre">
           Arusha News
         </h1>
 
         {/* Navigation Bar */}
-        <nav className="w-full bg-white shadow-md">
+        <nav className="w-full shadow-md">
           <div className="container mx-auto flex justify-center py-4">
             <ul className="flex space-x-4">
               <li>
-                <a href="#" className="text-gray-700 hover:text-gray-900">
-                  Home
-                </a>
+                <Link
+                  href="#"
+                  onClick={() => setSelectedTag(null)}
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  All
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-gray-900">
+                <Link
+                  href="#"
+                  onClick={() => setSelectedTag("Politics")}
+                  className="text-gray-700 hover:text-gray-900"
+                >
                   Politics
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-gray-900">
+                <Link
+                  href="#"
+                  onClick={() => setSelectedTag("Business")}
+                  className="text-gray-700 hover:text-gray-900"
+                  >
+                    Business
+                  </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  onClick={() => setSelectedTag("Sports")}
+                  className="text-gray-700 hover:text-gray-900"
+                >
                   Sports
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-700 hover:text-gray-900">
+                <Link
+                  href="#"
+                  onClick={() => setSelectedTag("Entertainment")}
+                  className="text-gray-700 hover:text-gray-900"
+                >
                   Entertainment
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-700 hover:text-gray-900">
-                  Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </nav>
 
-        {/* Weekly Edition Selector */}
-        <div className="my-6">
-          <label htmlFor="edition" className="text-lg font-medium mr-2">
-            Select Weekly Edition:
-          </label>
-          <select id="edition" className="p-2 border rounded-md">
-            <option value="week1">Week 1</option>
-            <option value="week2">Week 2</option>
-            <option value="week3">Week 3</option>
-          </select>
-        </div>
-
         {/* News Articles Section */}
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 px-4">
-          {/* Article 1 */}
-          <div className="bg-white shadow-md rounded-lg p-4">
-            <h2 className="text-xl font-semibold mb-2">Article Title 1</h2>
-            <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              nec iaculis mauris.
-            </p>
-          </div>
-
-          {/* Article 2 */}
-          <div className="bg-white shadow-md rounded-lg p-4">
-            <h2 className="text-xl font-semibold mb-2">Article Title 2</h2>
-            <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              nec iaculis mauris.
-            </p>
-          </div>
-
-          {/* Article 3 */}
-          <div className="bg-white shadow-md rounded-lg p-4">
-            <h2 className="text-xl font-semibold mb-2">Article Title 3</h2>
-            <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              nec iaculis mauris.
-            </p>
-          </div>
+          {filteredArticles.map((article) => (
+            <div key={article.id} className="bg-white shadow-md rounded-lg p-4">
+              <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+              <p className="text-gray-600">{article.content}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>
   );
 };
 
-// Export the component as the default export
 export default HomePage;
