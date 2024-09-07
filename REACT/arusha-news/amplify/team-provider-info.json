@@ -1,0 +1,39 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-arushanews-dev-bf82a-authRole",
+      "UnauthRoleArn": "arn:aws:iam::501898275966:role/amplify-arushanews-dev-bf82a-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::501898275966:role/amplify-arushanews-dev-bf82a-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-arushanews-dev-bf82a-deployment",
+      "UnauthRoleName": "amplify-arushanews-dev-bf82a-unauthRole",
+      "StackName": "amplify-arushanews-dev-bf82a",
+      "StackId": "arn:aws:cloudformation:eu-west-2:501898275966:stack/amplify-arushanews-dev-bf82a/ca299990-6d06-11ef-b8d7-0699a8eb2f59",
+      "AmplifyAppId": "d2ig9jfkmjuz2c",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-arushanews-dev-bf82a-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "api": {
+        "arushanews": {}
+      },
+      "auth": {
+        "arushanews3adad35d": {}
+      },
+      "function": {
+        "arushanews3adad35dDefineAuthChallenge": {
+          "deploymentBucketName": "amplify-arushanews-dev-bf82a-deployment",
+          "s3Key": "amplify-builds/arushanews3adad35dDefineAuthChallenge-4a6f666c6d766a382f43-build.zip"
+        },
+        "arushanews3adad35dCreateAuthChallenge": {
+          "deploymentBucketName": "amplify-arushanews-dev-bf82a-deployment",
+          "s3Key": "amplify-builds/arushanews3adad35dCreateAuthChallenge-656645486f552b783267-build.zip"
+        },
+        "arushanews3adad35dVerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "",
+          "deploymentBucketName": "amplify-arushanews-dev-bf82a-deployment",
+          "s3Key": "amplify-builds/arushanews3adad35dVerifyAuthChallengeResponse-54796c3765514b632f72-build.zip"
+        }
+      }
+    }
+  }
+}

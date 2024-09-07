@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { signUp } from "aws-amplify/auth"
 
 // Sample articles data
 const initialArticles = [
@@ -120,5 +121,15 @@ const HomePage: React.FC = () => {
     </>
   );
 };
+const { isSignUpComplete, userId, nextStep } = await signUp({
+  username: "hello@mycompany.com",
+  password: "hunter2",
+  options: {
+    userAttributes: {
+      email: "hello@mycompany.com",
+      phone_number: "+15555555555" // E.164 number convention
+    },
+  }
+});
 
 export default HomePage;
